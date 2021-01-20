@@ -2218,6 +2218,8 @@ static_assert((sizeof(client_t) == 0x78F14), "ERROR: client_t size is invalid!")
 static_assert((sizeof(client_t) == 0x79064), "ERROR: client_t size is invalid!");
 #elif COD_VERSION == COD2_1_3
 static_assert((sizeof(client_t) == 0xB1064), "ERROR: client_t size is invalid!");
+#elif COD_VERSION == CODUO_1_51
+static_assert((sizeof(client_t) == 0xAB0B4), "ERROR: client_t size is invalid!")
 #endif
 
 static_assert((sizeof(gentity_t) == 560), "ERROR: gentity_t size is invalid!");
