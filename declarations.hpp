@@ -2224,10 +2224,20 @@ static_assert((sizeof(client_t) == 0xB1064), "ERROR: client_t size is invalid!")
 static_assert((sizeof(client_t) == 0xAB0B4), "ERROR: client_t size is invalid!");
 #endif
 
-static_assert((sizeof(gentity_t) == 560), "ERROR: gentity_t size is invalid!");
-static_assert((sizeof(gclient_t) == 0x28A4), "ERROR: gclient_t size is invalid!"); // for UO 1.51 it's 0x4734
-static_assert((sizeof(gitem_t) == 44), "ERROR: gitem_t size is invalid!");
-static_assert((sizeof(XModel_t) == 144), "ERROR: XModel_t size is invalid!");
+#if COD_VERSION == CODUO_1_51
+#static_assert((sizeof(gentity_t) == 560), "ERROR: gentity_t size is invalid!");
+#endif
+
+#if COD_VERSION == CODUO_1_51
+static_assert((sizeof(gclient_t) == 0x4734), "ERROR: gclient_t size is invalid!");
+#endif
+
+#if COD_VERSION == CODUO_1_51
+#static_assert((sizeof(gitem_t) == 44), "ERROR: gitem_t size is invalid!");
+#endif
+
+#if COD_VERSION == CODUO_1_51
+#static_assert((sizeof(XModel_t) == 144), "ERROR: XModel_t size is invalid!");
 #endif
 
 #endif
