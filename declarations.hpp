@@ -2138,6 +2138,8 @@ static const int gclients_offset = 0x086F1480;
 static const int gclients_offset = 0x08705480;
 #elif COD_VERSION == COD2_1_3
 static const int gclients_offset = 0x087A2500;
+#elif COD_VERSION == CODUO_1_51
+static const int gclients_offset = 0x0011CD00;
 #endif
 
 #define g_entities ((gentity_t*)(gentities_offset))
@@ -2223,7 +2225,7 @@ static_assert((sizeof(client_t) == 0xAB0B4), "ERROR: client_t size is invalid!")
 #endif
 
 static_assert((sizeof(gentity_t) == 560), "ERROR: gentity_t size is invalid!");
-static_assert((sizeof(gclient_t) == 0x28A4), "ERROR: gclient_t size is invalid!");
+static_assert((sizeof(gclient_t) == 0x28A4), "ERROR: gclient_t size is invalid!"); // for UO 1.51 it's 0x4734
 static_assert((sizeof(gitem_t) == 44), "ERROR: gitem_t size is invalid!");
 static_assert((sizeof(XModel_t) == 144), "ERROR: XModel_t size is invalid!");
 #endif
