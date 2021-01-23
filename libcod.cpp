@@ -1535,10 +1535,10 @@ public:
 		hook_player_eject->hook();
 		*/
 		
-/*
-		hook_fire_grenade = new cHook(0x0810E68E, (int)fire_grenade);
+
+		hook_fire_grenade = new cHook(0x0005F7AD, (int)fire_grenade); //game.mp.uo.i386.so every offset located in game.mp must be called by other way!!!!
 		hook_fire_grenade->hook();
-*/
+
 #if COMPILE_PLAYER == 1
 		hook_play_movement = new cHook(0x0808D829, (int)play_movement); // SV_ClientThink
 		hook_play_movement->hook();
