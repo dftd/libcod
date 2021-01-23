@@ -1516,7 +1516,7 @@ public:
 		cracking_hook_call(0x0808D573, (int)hook_ClientUserinfoChanged); // Is client command in CoDUO
 		cracking_hook_call(0x0809E8ED, (int)Scr_GetCustomFunction);
 		cracking_hook_call(0x0809EB29, (int)Scr_GetCustomMethod);
-		//cracking_hook_call(0x0811098E, (int)Com_DPrintf);
+		cracking_hook_call(0x00066C7B, (int)Com_DPrintf);
 
 #if COMPILE_PLAYER == 1
 		cracking_hook_call(0x0808BEE6, (int)hook_gamestate_info);
@@ -1524,46 +1524,66 @@ public:
 
 		cracking_hook_call(0x080AE01E, (int)hook_scriptError); // Try 0x080AE84D if not
 
-		/*hook_gametype_scripts = new cHook(0x08110286, (int)hook_codscript_gametype_scripts);
+		hook_gametype_scripts = new cHook(0x000663C2, (int)hook_codscript_gametype_scripts); // it was in game.mp.uo.i386.so
 		hook_gametype_scripts->hook();
 
-		hook_player_collision = new cHook(0x080F5682, (int)player_collision);
+		hook_player_collision = new cHook(0x00040C1C, (int)player_collision); //game.mp.uo.i386.so
 		hook_player_collision->hook();
+		
+		/*
 		hook_player_eject = new cHook(0x080F6E9E, (int)player_eject);
 		hook_player_eject->hook();
+		*/
+		
+/*
 		hook_fire_grenade = new cHook(0x0810E68E, (int)fire_grenade);
 		hook_fire_grenade->hook();
-
+*/
 #if COMPILE_PLAYER == 1
-		hook_play_movement = new cHook(0x08090DAC, (int)play_movement); // SV_ClientThink
+		hook_play_movement = new cHook(0x0808D829, (int)play_movement); // SV_ClientThink
 		hook_play_movement->hook();
-		hook_play_endframe = new cHook(0x080F7516, (int)play_endframe);
+		
+		hook_play_endframe = new cHook(0x00042F59, (int)play_endframe);
 		hook_play_endframe->hook();
+		
+		/*
 		hook_set_anim = new cHook(0x080D90D6, (int)set_anim);
 		hook_set_anim->hook();
-		hook_touch_item_auto = new cHook(0x08105C80, (int)touch_item_auto);
+		*/
+		
+		hook_touch_item_auto = new cHook(0x0005473B, (int)touch_item_auto);
 		hook_touch_item_auto->hook();
 #endif
-
+/*
 		cracking_hook_function(0x080EBF24, (int)hook_BG_IsWeaponValid);
-		cracking_hook_function(0x0808FDC2, (int)custom_SV_WriteDownloadToClient);
+*/		
+		cracking_hook_function(0x0808C559, (int)custom_SV_WriteDownloadToClient);
+		
+		/*
 		cracking_hook_function(0x080B7FA6, (int)custom_va);
-		cracking_hook_function(0x08090534, (int)hook_SV_VerifyIwds_f);
-		cracking_hook_function(0x080907BA, (int)hook_SV_ResetPureClient_f);
-		cracking_hook_function(0x080963C8, (int)custom_SV_CalcPings);
-		cracking_hook_function(0x0809657E, (int)custom_SV_CheckTimeouts);
-		cracking_hook_function(0x08096ED6, (int)custom_SV_MasterHeartbeat);
+		*/
+		
+		cracking_hook_function(0x0808CF23, (int)hook_SV_VerifyIwds_f);
+		
+		cracking_hook_function(0x0808D2B5, (int)hook_SV_ResetPureClient_f);
+		
+		cracking_hook_function(0x08094CAD, (int)custom_SV_CalcPings);
+		
+		cracking_hook_function(0x08094E0D, (int)custom_SV_CheckTimeouts);
+		
+		cracking_hook_function(0x080917D6, (int)custom_SV_MasterHeartbeat);
 
 #if COMPILE_BOTS == 1
-		cracking_hook_function(0x0809676C, (int)custom_SV_BotUserMove);
+		cracking_hook_function(0x08095033, (int)custom_SV_BotUserMove);
 #endif
 
 #if COMPILE_RATELIMITER == 1
-		cracking_hook_call(0x08095C48, (int)hook_SVC_Info);
-		cracking_hook_call(0x08095B94, (int)hook_SVC_Status);
-		cracking_hook_call(0x08095CB2, (int)hook_SV_GetChallenge);
-		cracking_hook_call(0x08095E1D, (int)hook_SVC_RemoteCommand);
-#endif*/
+		cracking_hook_call(0x0809456F, (int)hook_SVC_Info);
+		cracking_hook_call(0x0809452C, (int)hook_SVC_Status);
+		cracking_hook_call(0x0809443E, (int)hook_SV_GetChallenge);
+		cracking_hook_call(0x080946F9, (int)hook_SVC_RemoteCommand);
+#endif
+		
 #endif
 		printf("> [PLUGIN LOADED]\n");
 	}
