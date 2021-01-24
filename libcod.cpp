@@ -1559,9 +1559,9 @@ public:
 */		
 		cracking_hook_function(0x0808C559, (int)custom_SV_WriteDownloadToClient);
 		
-		/*
-		cracking_hook_function(0x080B7FA6, (int)custom_va);
-		*/
+		
+		cracking_hook_function(0x000938FF, (int)custom_va); //game.mp.uo.i386.so
+		
 		
 		cracking_hook_function(0x0808CF23, (int)hook_SV_VerifyIwds_f);
 		
