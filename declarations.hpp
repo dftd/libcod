@@ -2129,7 +2129,9 @@ static const int gentities_offset = 0x08665480;
 #elif COD_VERSION == COD2_1_2
 static const int gentities_offset = 0x08679380;
 #elif COD_VERSION == COD2_1_3
-static const int gentities_offset = 0x08716400;
+static const int gentities_offset = 0x08716400; 
+#elif COD_VERSION == CODUO_1_51
+static const int gentities_offset = 0x00079AE0; //probably
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2148,17 +2150,21 @@ static const int gclients_offset = 0x0011CD00;
 #if COD_VERSION == COD2_1_0
 static const int varpub_offset = 0x08394000;
 #elif COD_VERSION == COD2_1_2
-static const int varpub_offset = 0x08396480;
+static const int varpub_offset = 0x08396480; 
 #elif COD_VERSION == COD2_1_3
 static const int varpub_offset = 0x08397500;
+#elif COD_VERSION == CODUO_1_51
+static const int varpub_offset = 0x0842FDF4;
 #endif
 
 #if COD_VERSION == COD2_1_0
 static const int varglob_offset = 0x08294000;
 #elif COD_VERSION == COD2_1_2
-static const int varglob_offset = 0x08296480;
+static const int varglob_offset = 0x08296480; 
 #elif COD_VERSION == COD2_1_3
 static const int varglob_offset = 0x08297500;
+#elif COD_VERSION == CODUO_1_51
+static const int varglob_offset = 0x083EFDE0;
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2172,9 +2178,13 @@ static const int vmpub_offset = 0x083D8A80;
 #if COD_VERSION == COD2_1_0
 static const int sv_offset = 0x0842BC80;
 #elif COD_VERSION == COD2_1_2
-static const int sv_offset = 0x0843F180;
+static const int sv_offset = 0x0843F180; 
 #elif COD_VERSION == COD2_1_3
 static const int sv_offset = 0x08440200;
+#elif COD_VERSION == COD2_1_3
+static const int sv_offset = 0x08494A80;
+#elif COD_VERSION == CODUO_1_51
+static const int sv_offset = 0x08494A80;
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2184,15 +2194,17 @@ static const int svs_offset = 0x08422000;
 #elif COD_VERSION == COD2_1_3
 static const int svs_offset = 0x08423080;
 #elif COD_VERSION == CODUO_1_51
-static const int svs_offset = 0x084F7000; 
+static const int svs_offset = 0x084F7000;  //if won't work try 0x08494A64
 #endif
 
 #if COD_VERSION == COD2_1_0
 static const int level_offset = 0x0859B400;
 #elif COD_VERSION == COD2_1_2
-static const int level_offset = 0x085AF300;
+static const int level_offset = 0x085AF300; 
 #elif COD_VERSION == COD2_1_3
-static const int level_offset = 0x0864C380;
+static const int level_offset = 0x0864C380; 
+#elif COD_VERSION == CODUO_1_51
+static const int level_offset = 0x00040223; //probably if won't work try 0x00040292
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2201,6 +2213,8 @@ static const int const_offset = 0x087A22A0;
 static const int const_offset = 0x087B61A0;
 #elif COD_VERSION == COD2_1_3
 static const int const_offset = 0x08853220;
+#elif COD_VERSION == CODUO_1_51
+static const int const_offset = 0x00067C00; //probably
 #endif
 
 #define scrVarPub (*((scrVarPub_t*)( varpub_offset )))
@@ -2225,7 +2239,7 @@ static_assert((sizeof(client_t) == 0xAB0B4), "ERROR: client_t size is invalid!")
 #endif
 
 #if COD_VERSION == CODUO_1_51
-#static_assert((sizeof(gentity_t) == 560), "ERROR: gentity_t size is invalid!");
+static_assert((sizeof(gentity_t) == 844), "ERROR: gentity_t size is invalid!");
 #endif
 
 #if COD_VERSION == CODUO_1_51
