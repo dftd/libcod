@@ -1546,16 +1546,16 @@ public:
 		hook_play_endframe = new cHook(0x00042F59, (int)play_endframe);
 		hook_play_endframe->hook();
 		
-		/*
-		hook_set_anim = new cHook(0x080D90D6, (int)set_anim);
+		
+		hook_set_anim = new cHook(0x0001BFB9, (int)set_anim); //game.mp.uo
 		hook_set_anim->hook();
-		*/
+		
 		
 		hook_touch_item_auto = new cHook(0x0005473B, (int)touch_item_auto);
 		hook_touch_item_auto->hook();
 #endif
 /*
-		cracking_hook_function(0x080EBF24, (int)hook_BG_IsWeaponValid);
+		cracking_hook_function(0x080EBF24, (int)hook_BG_IsWeaponValid); 00032286 maybe but it probably doesn't even exists for UO game.mp.uo
 */		
 		cracking_hook_function(0x0808C559, (int)custom_SV_WriteDownloadToClient);
 		
