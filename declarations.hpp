@@ -2172,7 +2172,9 @@ static const int vmpub_offset = 0x083D7600;
 #elif COD_VERSION == COD2_1_2
 static const int vmpub_offset = 0x083D7A00;
 #elif COD_VERSION == COD2_1_3
-static const int vmpub_offset = 0x083D8A80;
+static const int vmpub_offset = 0x083D8A80; 
+#elif COD_VERSION == CODUO_1_51
+static const int vmpub_offset = 0x08433F68;
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2251,7 +2253,7 @@ static_assert((sizeof(gclient_t) == 0x4734), "ERROR: gclient_t size is invalid!"
 #endif
 
 #if COD_VERSION == CODUO_1_51
-#static_assert((sizeof(XModel_t) == 144), "ERROR: XModel_t size is invalid!");
+#static_assert((sizeof(XModel_t) == 120), "ERROR: XModel_t size is invalid!"); //probably it's incorrect value i dunno
 #endif
 
 #endif
