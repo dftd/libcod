@@ -2249,11 +2249,11 @@ static_assert((sizeof(gclient_t) == 0x4734), "ERROR: gclient_t size is invalid!"
 #endif
 
 #if COD_VERSION == CODUO_1_51
-#static_assert((sizeof(gitem_t) == 44), "ERROR: gitem_t size is invalid!");
+static_assert((sizeof(gitem_t) == 44), "ERROR: gitem_t size is invalid!");
 #endif
 
 #if COD_VERSION == CODUO_1_51
-#static_assert((sizeof(XModel_t) == 120), "ERROR: XModel_t size is invalid!"); //probably it's incorrect value i dunno
+static_assert((sizeof(XModel_t) == 120), "ERROR: XModel_t size is invalid!"); //probably it's incorrect value i dunno if doesn't work try 144
 #endif
 
 #endif
