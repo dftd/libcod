@@ -1516,7 +1516,7 @@ public:
 		cracking_hook_call(0x0808D573, (int)hook_ClientUserinfoChanged); // Is client command in CoDUO
 		cracking_hook_call(0x0809E8ED, (int)Scr_GetCustomFunction);
 		cracking_hook_call(0x0809EB29, (int)Scr_GetCustomMethod);
-		cracking_hook_call(0x00066C7B, (int)Com_DPrintf);
+		cracking_hook_call(0x00066C7B, (int)Com_DPrintf); //game.mp.uo.i386
 
 #if COMPILE_PLAYER == 1
 		cracking_hook_call(0x0808BEE6, (int)hook_gamestate_info);
@@ -1543,15 +1543,15 @@ public:
 		hook_play_movement = new cHook(0x0808D829, (int)play_movement); // SV_ClientThink
 		hook_play_movement->hook();
 		
-		hook_play_endframe = new cHook(0x00042F59, (int)play_endframe);
+		hook_play_endframe = new cHook(0x00042F59, (int)play_endframe); //game.mp.uo.i386
 		hook_play_endframe->hook();
 		
 		
-		hook_set_anim = new cHook(0x0001BFB9, (int)set_anim); //game.mp.uo
+		hook_set_anim = new cHook(0x0001BFB9, (int)set_anim); //game.mp.uo.i386
 		hook_set_anim->hook();
 		
 		
-		hook_touch_item_auto = new cHook(0x0005473B, (int)touch_item_auto);
+		hook_touch_item_auto = new cHook(0x0005473B, (int)touch_item_auto); //game.mp.uo.i386
 		hook_touch_item_auto->hook();
 #endif
 /*
