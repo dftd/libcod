@@ -2131,7 +2131,7 @@ static const int gentities_offset = 0x08679380;
 #elif COD_VERSION == COD2_1_3
 static const int gentities_offset = 0x08716400; 
 #elif COD_VERSION == CODUO_1_51
-static const int gentities_offset = 0x00079AE0; //probably
+static const int gentities_offset = 0x00079AE0; //probably game.mp.uo.i386.so
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2141,7 +2141,7 @@ static const int gclients_offset = 0x08705480;
 #elif COD_VERSION == COD2_1_3
 static const int gclients_offset = 0x087A2500;
 #elif COD_VERSION == CODUO_1_51
-static const int gclients_offset = 0x0011CD00;
+static const int gclients_offset = 0x0011CD00; //game.mp.uo.i386.so
 #endif
 
 #define g_entities ((gentity_t*)(gentities_offset))
@@ -2206,7 +2206,7 @@ static const int level_offset = 0x085AF300;
 #elif COD_VERSION == COD2_1_3
 static const int level_offset = 0x0864C380; 
 #elif COD_VERSION == CODUO_1_51
-static const int level_offset = 0x00040223; //probably if won't work try 0x00040292
+static const int level_offset = 0x00040223; //probably if won't work try 0x00040292 game.mp.uo.i386.so
 #endif
 
 #if COD_VERSION == COD2_1_0
@@ -2216,7 +2216,7 @@ static const int const_offset = 0x087B61A0;
 #elif COD_VERSION == COD2_1_3
 static const int const_offset = 0x08853220;
 #elif COD_VERSION == CODUO_1_51
-static const int const_offset = 0x00067C00; //probably
+static const int const_offset = 0x00067C00; //probably game.mp.uo.i386.so
 #endif
 
 #define scrVarPub (*((scrVarPub_t*)( varpub_offset )))
