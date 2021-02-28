@@ -3,6 +3,8 @@
 
 /* MAKE FUNCTIONS STATIC, SO THEY CAN BE IN EVERY FILE */
 
+#define GAME(n) ((gamelib!=NULL)?(int)dlsym(gamelib,n):0) // cod uo
+
 typedef unsigned int (*GetVariableName_t)(unsigned int a1);
 #if COD_VERSION == COD2_1_0
 static const GetVariableName_t GetVariableName = (GetVariableName_t)0x0807CA72;

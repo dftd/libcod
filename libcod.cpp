@@ -28,6 +28,73 @@ cvar_t *sv_downloadMessage;
 #define PORT_MASTER 20710
 cvar_t *sv_master[MAX_MASTER_SERVERS];
 
+void *Sys_LoadDll(char *name, char *dest, int (**entryPoint)(int, ...), int (*systemcalls)(int, ...)) // taken from CoDExtended
+{
+	char *err;
+	char *error;
+	char *fn;
+	char *gamedir;
+	char *basepath;
+	char *homepath;
+	char *pwdpath;
+	char fname[100];
+	void *dllEntry;
+	void *libHandle;
+	
+	void *(*call)(char *name, char *dest, int (**entryPoint)(int, ...), int (*systemcalls)(int, ...));
+	*(int *)&call = 0x80C9071;
+	void *ret = call(name, dest, entryPoint, systemcalls);
+	
+	set_game_ptr(ret);
+	
+	return ret;
+}
+
+void set_game_ptr(void *ret) // taken from CoDExtended
+{
+	char libn[512];
+	cvar_t *fs_game = Cvar_FindVar("fs_game");
+	if(strlen(fs_game->string) == 0)
+		sprintf(libn, "main/game.mp.uo.i386.so");
+	else
+		sprintf(libn, "%s/game.mp.uo.i386.so", check);
+	
+	int unprotect_lib(char *libname);
+	unprotect_lib(libn);
+	
+	gamelib = ret;
+	base = (int)GAME("vmMain");
+	g_entities = (gentity_t*)GAME("g_entities");
+	level = (level_locals_t*)GAME("level");
+	pml = (char (*)[140])GAME("pml");
+	pm = (pmove_t*)GAME("pm");
+	
+	// Note for Prawy: this is an example on how you call/jmp stuff from GAME
+	
+	// __jmp(GAME("G_SetClientContents"), (int)G_SetPlayerContents);
+	// __call(GAME("ClientCommand")+0x62D, (int)Cmd_CallVote);
+}
+
+static int unprotect_lib(char *libname) // taken from CoDExtended
+{
+    char buf[512];
+    char flags[4];
+    void *low, *high;
+    FILE *fp;
+    fp = fopen("/proc/self/maps", "r");
+    if (!fp)
+        return 0;
+    while (fgets(buf, sizeof(buf), fp)) {
+        if (!strstr(buf, libname))
+            continue;
+        if (sscanf(buf, "%p-%p %4c", &low, &high, flags) != 3)
+            continue;
+        mprotect((void *)low, (int)high-(int)low, PROT_READ | PROT_WRITE | PROT_EXEC);
+    }
+    fclose(fp);
+    return 1;
+}
+
 void hook_sv_init(const char *format, ...)
 {
 	char s[MAX_STRINGLENGTH];
@@ -1506,6 +1573,7 @@ public:
 
 #elif COD_VERSION == CODUO_1_51
 
+		cracking_hook_call(0x0809BE20, (int)Sys_LoadDLL);
 		cracking_hook_call(0x08071B38, (int)hook_sv_init);
 		cracking_hook_call(0x08091CF2, (int)hook_sv_spawnserver);
 		cracking_hook_call(0x0808D622, (int)hook_ClientCommand);
